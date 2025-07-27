@@ -47,8 +47,8 @@ async def test_uart_behavior(dut):
     # Reset
     dut._log.info("assert ena = 1")
     dut.ena.value = 1
-    await ClockCycles(dut.clk, 2)
-    dut.uio_in.value = 0
+    #await ClockCycles(dut.clk, 2)
+    #dut.uio_in.value = 0
     await ClockCycles(dut.clk, 2)
     dut.rst_n.value = 0
     await ClockCycles(dut.clk, 5)
