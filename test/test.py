@@ -33,7 +33,7 @@ async def wait_done_low(dut):
                 break
         else:
             await Timer(200, units="ns")
-            dut._log.warning(f"uio_out[0] not yet resolvable: {val}")
+            #dut._log.warning(f"uio_out[0] not yet resolvable: {val}")
 
 
 @cocotb.test()
