@@ -60,6 +60,7 @@ async def test_uart_behavior(dut):
 
     # Send UART byte 0x01
     await uart_send_byte(dut, 0x01)
+    await Timer(2500, units="ns")
     #await wait_done_low(dut)
 
     # Optional: add more test stimuli here
