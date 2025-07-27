@@ -3,7 +3,7 @@
 
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import ClockCycles, Timer, RisingEdge
+from cocotb.triggers import ClockCycles, Timer, RisingEdge, ReadOnly
 
 
 async def uart_send_byte(dut, byte):
@@ -21,6 +21,15 @@ async def uart_send_byte(dut, byte):
     # Stop bit
     dut.ui_in[0].value = 1
     await Timer(bit_time_ns, units="ns")
+
+
+async def wait_done_low(dut):
+    while True:
+        await RisingEdge(dut.clk)
+        await ReadOnly()
+        val = dut.uio_out[0].value
+        if val.is_resolvable and val.integer == 0:
+            break
 
 
 @cocotb.test()
@@ -42,18 +51,15 @@ async def test_uart_behavior(dut):
 
     # Send UART byte 0x01
     await uart_send_byte(dut, 0x01)
-    while dut.uio_out[0].value.integer != 0:
-        await RisingEdge(dut.clk)
+    await wait_done_low(dut)
 
     # Delay and send 0xA5
     await Timer(500, units="ns")
     await uart_send_byte(dut, 0xA5)
-    while dut.uio_out[0].value.integer != 0:
-        await RisingEdge(dut.clk)
+    await wait_done_low(dut)
 
     # Send 0x80
     await uart_send_byte(dut, 0x80)
-    while dut.uio_out[0].value.integer != 0:
-        await RisingEdge(dut.clk)
+    await wait_done_low(dut)
 
     dut._log.info("Test completed.")
