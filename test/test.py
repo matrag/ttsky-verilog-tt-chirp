@@ -47,12 +47,13 @@ async def test_uart_behavior(dut):
     # Reset
     dut._log.info("assert ena = 1")
     dut.ena.value = 1
-    dut._log.info("assert ui_in = 1")
-    dut.ui_in.value = 1  # UART idle (high)
     dut.uio_in.value = 0
     dut.rst_n.value = 0
     await ClockCycles(dut.clk, 5)
     dut.rst_n.value = 1
+    dut._log.info("assert ui_in = 1")
+    dut.ui_in.value = 1  # UART idle (high)
+    
     await ClockCycles(dut.clk, 5)
 
     # Send UART byte 0x01
