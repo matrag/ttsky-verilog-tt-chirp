@@ -20,8 +20,10 @@ module tt_um_matrag_chirp_top (
 //------Wires to connect Ports to design instantiation------------------
 //----------------------------------------------------------------------
 wire        w_i_rx     = ui_in[0];       //UART RX input line: ui_in[0] port
-wire        w_o_done   = uio_out[0];     //Done signal from chirp generator: uio_out[0]
-wire [7:0]  w_o_data   = uo_out;         //Out 8 bit data: uo_out[7:0]
+wire        w_o_done;
+assign      uio_out[0] = w_o_done;     //Done signal from chirp generator: uio_out[0]
+wire [7:0]  w_o_data;   
+assign      uo_out = w_o_data;         //Out 8 bit data: uo_out[7:0]
 
 //-------------------Design instantiation-------------------------------
 chirpmod #(
@@ -48,6 +50,6 @@ assign uio_out  [7:1]   = 7'b1;
 assign uio_oe   [7:0]   = 8'b1;
 
 // List all unused inputs to prevent warnings
-    wire _unused = &{ena, ui_in[7:1], uio_in[7:0], 1'b1};
+ wire _unused = &{ena, ui_in[7:1], uio_in[7:0], 1'b1};
 
 endmodule
