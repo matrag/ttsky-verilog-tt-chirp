@@ -29,10 +29,6 @@ module tb ();
 
   // Replace tt_um_example with your module name:
   tt_um_matrag_chirp_top uut(
-
-      // Include power ports for the Gate Level test:
-
-
       .ui_in  (ui_in),    // Dedicated inputs
       .uo_out (uo_out),   // Dedicated outputs
       .uio_in (uio_in),   // IOs: Input path
