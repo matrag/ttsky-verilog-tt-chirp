@@ -77,7 +77,7 @@ module uart_rx (
                     if (r_clk_cnt == i_baud_div) begin
                         r_state <= DONE;
                     end else begin
-                        r_clk_cnt = r_clk_cnt +1; 
+                        r_clk_cnt <= r_clk_cnt +1; 
                     end                   
                 end
 
