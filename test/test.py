@@ -32,6 +32,7 @@ async def wait_done_low(dut):
             if val.integer == 0:
                 break
         else:
+            await Timer(200, units="ns")
             dut._log.warning(f"uio_out[0] not yet resolvable: {val}")
 
 
