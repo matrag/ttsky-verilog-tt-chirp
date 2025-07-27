@@ -23,13 +23,13 @@ async def uart_send_byte(dut, byte):
     await Timer(bit_time_ns, units="ns")
 
 
-async def wait_done_low(dut):
-    while True:
-        await RisingEdge(dut.clk)
-        await ReadOnly()
-        val = dut.uio_out[0].value
-        if val.is_resolvable and val.integer == 0:
-            break
+#async def wait_done_low(dut):
+#    while True:
+#        await RisingEdge(dut.clk)
+#        await ReadOnly()
+#        val = dut.uio_out[0].value
+#        if val.is_resolvable and val.integer == 0:
+#            break
 
 
 @cocotb.test()
