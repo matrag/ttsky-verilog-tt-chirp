@@ -23,13 +23,16 @@ async def uart_send_byte(dut, byte):
     await Timer(bit_time_ns, units="ns")
 
 
-#async def wait_done_low(dut):
-#    while True:
-#        await RisingEdge(dut.clk)
-#        await ReadOnly()
-#        val = dut.uio_out[0].value
-#        if val.is_resolvable and val.integer == 0:
-#            break
+async def wait_done_low(dut):
+    while True:
+        await RisingEdge(dut.clk)
+        await ReadOnly()
+        val = dut.uio_out[0].value
+        if val.is_resolvable:
+            if val.integer == 0:
+                break
+        else:
+            dut._log.warning(f"uio_out[0] not yet resolvable: {val}")
 
 
 @cocotb.test()
@@ -41,8 +44,10 @@ async def test_uart_behavior(dut):
     cocotb.start_soon(clock.start())
 
     # Reset
+    dut._log.info("assert ena = 1")
     dut.ena.value = 1
-    dut.ui_in.value = 1  # Idle state for UART RX
+    dut._log.info("assert ui_in = 1")
+    dut.ui_in.value = 1  # UART idle (high)
     dut.uio_in.value = 0
     dut.rst_n.value = 0
     await ClockCycles(dut.clk, 5)
@@ -51,16 +56,10 @@ async def test_uart_behavior(dut):
 
     # Send UART byte 0x01
     await uart_send_byte(dut, 0x01)
-    await Timer(4000, units="ns")
-    #await wait_done_low(dut)
+    await wait_done_low(dut)
 
-    # Delay and send 0xA5
-    #await Timer(500, units="ns")
-    #await uart_send_byte(dut, 0xA5)
-    #await wait_done_low(dut)
-
-    # Send 0x80
-    #await uart_send_byte(dut, 0x80)
-    #await wait_done_low(dut)
+    # Optional: add more test stimuli here
+    # await uart_send_byte(dut, 0xA5)
+    # await wait_done_low(dut)
 
     dut._log.info("Test completed.")
