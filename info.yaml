@@ -30,7 +30,7 @@ project:
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
 pinout:
   # Inputs
-  ui[0]: "RX"
+  ui[0]: "UART RX"
   ui[1]: ""
   ui[2]: ""
   ui[3]: ""
@@ -40,17 +40,17 @@ pinout:
   ui[7]: ""
 
   # Outputs
-  uo[0]: "o_data_0"
+  uo[0]: "o_data_0(LSB)"
   uo[1]: "o_data_1"
   uo[2]: "o_data_2"
   uo[3]: "o_data_3"
   uo[4]: "o_data_4"
   uo[5]: "o_data_5"
   uo[6]: "o_data_6"
-  uo[7]: "o_data_7"
+  uo[7]: "o_data_7(MSB)"
 
   # Bidirectional pins
-  uio[0]: "o_done"
+  uio[0]: "o_done(Chirp Done)"
   uio[1]: ""
   uio[2]: ""
   uio[3]: ""
