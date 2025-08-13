@@ -6,21 +6,25 @@ from cocotb.clock import Clock
 from cocotb.triggers import ClockCycles, Timer, RisingEdge, ReadOnly
 
 
-async def uart_send_byte(dut, byte):
+def uart_send_byte(dut, byte):
+    dut._log.info("Start UART send routine")
     bit_time_ns = 104160  # 104.16 us = 9600 baud
 
     # Start bit
+    dut._log.info("set start bit to 0")
     dut.ui_in[0].value = 0
     await Timer(bit_time_ns, units="ns")
 
     # Data bits (LSB first)
     for i in range(8):
         dut.ui_in[0].value = (byte >> i) & 1
+        dut._log.info("write bit value to DUT: ")
+        dut._log.info(dut.ui_in[0].value)
         await Timer(bit_time_ns, units="ns")
 
     # Stop bit
+    dut._log.info("set stop bit to 1")
     dut.ui_in[0].value = 1
-    await Timer(bit_time_ns, units="ns")
 
 
 async def wait_done_low(dut):
@@ -61,7 +65,7 @@ async def test_uart_behavior(dut):
     # Send UART byte 0x01
     await uart_send_byte(dut, 0x01)
     #await Timer(2500, units="us")
-    await wait_done_low(dut)
+    #await wait_done_low(dut)
 
     # Optional: add more test stimuli here
     # await uart_send_byte(dut, 0xA5)
