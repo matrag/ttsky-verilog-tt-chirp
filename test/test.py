@@ -62,6 +62,6 @@ async def test_uart_behavior(dut):
     await Timer(bit_time_ns, units="ns")
 
     # Optional: wait for done
-    # await wait_done_low(dut)
+    await wait_done_low(dut)
 
     dut._log.info("Test completed.")
