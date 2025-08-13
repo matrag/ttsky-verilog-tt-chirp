@@ -6,27 +6,6 @@ from cocotb.clock import Clock
 from cocotb.triggers import ClockCycles, Timer, RisingEdge, ReadOnly
 
 
-def uart_send_byte(dut, byte):
-    dut._log.info("Start UART send routine")
-    bit_time_ns = 104160  # 104.16 us = 9600 baud
-
-    # Start bit
-    dut._log.info("set start bit to 0")
-    dut.ui_in[0].value = 0
-    await Timer(bit_time_ns, units="ns")
-
-    # Data bits (LSB first)
-    for i in range(8):
-        dut.ui_in[0].value = (byte >> i) & 1
-        dut._log.info("write bit value to DUT: ")
-        dut._log.info(dut.ui_in[0].value)
-        await Timer(bit_time_ns, units="ns")
-
-    # Stop bit
-    dut._log.info("set stop bit to 1")
-    dut.ui_in[0].value = 1
-
-
 async def wait_done_low(dut):
     while True:
         await RisingEdge(dut.clk)
@@ -37,7 +16,6 @@ async def wait_done_low(dut):
                 break
         else:
             await Timer(200, units="ns")
-            #dut._log.warning(f"uio_out[0] not yet resolvable: {val}")
 
 
 @cocotb.test()
@@ -51,8 +29,6 @@ async def test_uart_behavior(dut):
     # Reset
     dut._log.info("assert ena = 1")
     dut.ena.value = 1
-    #await ClockCycles(dut.clk, 2)
-    #dut.uio_in.value = 0
     await ClockCycles(dut.clk, 2)
     dut.rst_n.value = 0
     await ClockCycles(dut.clk, 5)
@@ -62,13 +38,30 @@ async def test_uart_behavior(dut):
     dut.ui_in.value = 1  # UART idle (high)
     await ClockCycles(dut.clk, 5)
 
-    # Send UART byte 0x01
-    await uart_send_byte(dut, 0x01)
-    #await Timer(2500, units="us")
-    #await wait_done_low(dut)
+    # UART transmission of 0x01 directly inlined
+    bit_time_ns = 104160
+    byte = 0x01
 
-    # Optional: add more test stimuli here
-    # await uart_send_byte(dut, 0xA5)
+    dut._log.info("Start UART send routine")
+
+    # Start bit
+    dut._log.info("set start bit to 0")
+    dut.ui_in[0].value = 0
+    await Timer(bit_time_ns, units="ns")
+
+    # Data bits (LSB first)
+    for i in range(8):
+        bit_val = (byte >> i) & 1
+        dut.ui_in[0].value = bit_val
+        dut._log.info(f"write bit {i} = {bit_val}")
+        await Timer(bit_time_ns, units="ns")
+
+    # Stop bit
+    dut._log.info("set stop bit to 1")
+    dut.ui_in[0].value = 1
+    await Timer(bit_time_ns, units="ns")
+
+    # Optional: wait for done
     # await wait_done_low(dut)
 
     dut._log.info("Test completed.")
