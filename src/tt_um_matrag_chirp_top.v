@@ -44,16 +44,14 @@ chirpmod #(
   );
 
     //-------------------IO Ports assigned to Output ('1')------------------
-    assign uio_oe   [0]   = 1; //enabe uio_out[0]
-    assign uio_oe   [7:1]   = 0; //all others 0 (unused)
-    //-------------------Unused iO Out Ports assigned to '0'-------------------
-    //-----All output pins must be assigned. If not used, assign to '0'-----
-    assign uio_out  [7:1]   = 0;
+    assign uio_oe   [7:0]   = 8'b1111_1111; //enabe uio_out[0]
+    assign uio_out  [7:1]   = 7'b0000_000;
 
     // List all unused inputs to prevent warnings
     wire _unused = &{ena, uio_oe[7:1], uio_out[7:1], ui_in[7:1], uio_in[7:0], 1'b0};
 
 endmodule
+
 
 
 
