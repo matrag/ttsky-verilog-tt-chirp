@@ -40,7 +40,7 @@ async def test_uart_behavior(dut):
 
     # UART transmission of 0x01 directly inlined
     bit_time_ns = 104160
-    byte = 0x01
+    byte = 0x81
 
     dut._log.info("Start UART send routine")
 
