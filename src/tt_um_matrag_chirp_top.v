@@ -35,16 +35,22 @@ chirpmod #(
     .o_data  (uo_out)    //!Output bus data (8 bit)
   );
 
+    clk_generator clk_gen_inst
+    (
+        .i_rst_n(rst_n),
+        .o_clk  (uio_out[1])
+    );
+    
+
     //-------------------IO Ports assigned to Output ('1')------------------
-    //assign uio_oe   [7:0]   = 8'b1111_1111; //enabe uio_out[0]
-    //assign uio_out  [7:1]   = 7'b0000_000;
-    assign uio_oe   [7:0]   = 8'b0000_0001;
-    assign uio_out  [7:1]   = 7'b0000_000;
+    assign uio_oe   [7:0]   = 8'b0000_0011; //enable used uio outputs
+    assign uio_out  [7:1]   = 6'b0000_00;   //set other to zero
 
     // List all unused inputs to prevent warnings
     wire _unused = &{ena, uio_oe[7:0], uio_out[7:1], ui_in[7:1], uio_in[7:0], 1'b0};
 
 endmodule
+
 
 
 
