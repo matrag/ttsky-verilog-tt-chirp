@@ -12,7 +12,7 @@ module sine_rom #(
 
     always @(posedge i_clk) begin
         if (!i_rst_n) begin
-            o_data <= 8'd0;
+            o_data <= 8'd85;
         end else begin
             case (i_addr)
                 6'd0: o_data <= 8'd128;
@@ -85,4 +85,5 @@ module sine_rom #(
     end
 
 endmodule
+
 
