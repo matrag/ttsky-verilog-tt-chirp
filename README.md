@@ -1,3 +1,13 @@
+This project is a simple Chirp Modulator (something LoRa-style).
+
+The circuit will take in input an UART RX line, receive 1 byte (0x00 - 0xFF) and produce a chirp corresponding to the input symbol.
+The chirp will use Spreading Factor 8, Bandwidth 125 kHz.
+The circuit will use 10 MHz clock (external source).
+<img src="docs/additional/Megnevezetlen diagram.png" >
+
+
+
+
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
 
 # Tiny Tapeout Verilog Project Template
