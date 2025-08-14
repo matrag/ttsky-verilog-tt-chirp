@@ -22,22 +22,22 @@ async def wait_done_low(dut):
 async def test_uart_behavior(dut):
     dut._log.info("Starting test...")
 
-    # Clock setup: 10 MHz = 100 ns period
-    clock = Clock(dut.clk, 100, units="ns")
-    cocotb.start_soon(clock.start())
-
-    # Reset
-    dut._log.info("assert ena = 1")
-    dut.ena.value = 1
-    await ClockCycles(dut.clk, 2)
-    dut.rst_n.value = 0
-    await ClockCycles(dut.clk, 5)
+     
     dut.rst_n.value = 1
-    await ClockCycles(dut.clk, 2)
     dut._log.info("assert ui_in = 1")
     dut.ui_in.value = 1  # UART idle (high)
     await ClockCycles(dut.clk, 5)
 
+    # Clock setup: 10 MHz = 100 ns period
+    clock = Clock(dut.clk, 100, units="ns")
+    cocotb.start_soon(clock.start())
+
+    #Reset
+    dut.rst_n.value = 0
+    await ClockCycles(dut.clk, 5)
+    dut.rst_n.value = 1
+    await ClockCycles(dut.clk, 5)
+    
     # UART transmission of 0x01 directly inlined
     bit_time_ns = 104160
     byte = 0xAA
