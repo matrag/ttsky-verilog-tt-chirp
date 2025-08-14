@@ -26,12 +26,12 @@ async def test_uart_behavior(dut):
     dut.rst_n.value = 1
     dut._log.info("assert ui_in = 1")
     dut.ui_in.value = 1  # UART idle (high)
-    await ClockCycles(dut.clk, 5)
-
+    
     # Clock setup: 10 MHz = 100 ns period
     clock = Clock(dut.clk, 100, units="ns")
     cocotb.start_soon(clock.start())
-
+    await ClockCycles(dut.clk, 2)
+    
     #Reset
     dut.rst_n.value = 0
     await ClockCycles(dut.clk, 5)
