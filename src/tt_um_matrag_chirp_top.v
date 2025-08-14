@@ -23,8 +23,6 @@ wire        w_i_rx     = ui_in[0];       //UART RX input line: ui_in[0] port
 //wire        w_o_done;
 //assign      uio_out[0] = w_o_done;     //Done signal from chirp generator: uio_out[0]
 wire [7:0]  w_o_data;   
-assign      uo_out = w_o_data;         //Out 8 bit data: uo_out[7:0]
-
 //-------------------Design instantiation-------------------------------
 chirpmod #(
     .PHASE_WIDTH        (32),
@@ -44,6 +42,8 @@ chirpmod #(
     .o_data  (w_o_data)    //!Output bus data (8 bit)
   );
 
+    assign uo_out = w_o_data;         //Out 8 bit data: uo_out[7:0]
+
     //-------------------IO Ports assigned to Output ('1')------------------
     //assign uio_oe   [7:0]   = 8'b1111_1111; //enabe uio_out[0]
     //assign uio_out  [7:1]   = 7'b0000_000;
@@ -54,6 +54,7 @@ chirpmod #(
     wire _unused = &{ena, uio_oe[7:0], uio_out[7:0], ui_in[7:1], uio_in[7:0], 1'b0};
 
 endmodule
+
 
 
 
