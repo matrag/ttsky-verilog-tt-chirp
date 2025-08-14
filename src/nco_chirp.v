@@ -69,7 +69,7 @@ module nco_chirp #(
                 STATE_RUN: begin
                     o_phase_acc <= o_phase_acc + r_phase_inc;
                     if (sample_tick_fall) begin
-                        next_inc <= r_phase_inc + i_slope;
+                        next_inc = r_phase_inc + i_slope;
                         r_phase_inc <= (next_inc >= PHASE_INC_MAX) ? (next_inc - PHASE_INC_MAX) : next_inc;
                         sample_cnt <= sample_cnt + 1;
                     end
@@ -93,4 +93,5 @@ module nco_chirp #(
     end
 
 endmodule
+
 
