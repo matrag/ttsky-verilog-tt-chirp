@@ -4,7 +4,7 @@ module clk_generator (
 );
 
 always @ (*) begin
-  if(!rst_n) begin
+    if(!i_rst_n) begin
     o_clk = 0;
   end else begin
     o_clk = !o_clk;
