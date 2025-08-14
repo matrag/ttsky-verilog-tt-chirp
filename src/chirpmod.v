@@ -94,8 +94,10 @@ module chirpmod #(
     .DATA_WIDTH(DATA_WIDTH)
   ) rom_inst (
     .i_clk(i_clk),
+    .i_rst_n(w_rst_n_synch),
     .i_addr(w_rom_addr),
     .o_data(o_data)
   );
 
 endmodule
+
