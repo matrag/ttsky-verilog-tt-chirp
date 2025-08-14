@@ -31,20 +31,21 @@ chirpmod #(
     .i_rst_n (rst_n),   //!Input reset active Low
     .i_rx    (ui_in[0]),   //!Input UART rx (9600 bps) //UART RX input line: ui_in[0] port
     //.o_done_n(w_o_done),   //!Output done active Low
-    .o_done_n(),
+    .o_done_n(uio_out[0]),
     .o_data  (uo_out)    //!Output bus data (8 bit)
   );
 
     //-------------------IO Ports assigned to Output ('1')------------------
     //assign uio_oe   [7:0]   = 8'b1111_1111; //enabe uio_out[0]
     //assign uio_out  [7:1]   = 7'b0000_000;
-    assign uio_oe   [7:0]   = 8'b0000_0000;
-    assign uio_out  [7:0]   = 8'b0000_0000;
+    assign uio_oe   [7:0]   = 8'b0000_0001;
+    assign uio_out  [7:1]   = 7'b0000_000;
 
     // List all unused inputs to prevent warnings
-    wire _unused = &{ena, uio_oe[7:0], uio_out[7:0], ui_in[7:1], uio_in[7:0], 1'b0};
+    wire _unused = &{ena, uio_oe[7:0], uio_out[7:1], ui_in[7:1], uio_in[7:0], 1'b0};
 
 endmodule
+
 
 
 
