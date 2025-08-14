@@ -12,8 +12,8 @@ module tick_generator #(
     // --------------------------------------------------------------------------
     // State definition
     // --------------------------------------------------------------------------
-    parameter  IDLE = 1'b0;
-    parameter  RUN  = 1'b1;
+    parameter  IDLE = 2'b00;
+    parameter  RUN  = 2'b01;
 
     reg [1:0] r_state;
 
@@ -62,3 +62,4 @@ module tick_generator #(
     end
 
 endmodule
+
