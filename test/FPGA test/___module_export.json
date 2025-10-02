@@ -1,0 +1,279 @@
+{
+  "creator": "Yosys 0.47+211 (git sha1 fa0c31186, x86_64-w64-mingw32-g++ 13.2.1 -O3)",
+  "modules": {
+    "chirpmod": {
+      "attributes": {
+        "dynports": 1,
+        "cells_not_processed": 1,
+        "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:1.1-101.10"
+      },
+      "parameter_default_values": {
+        "ADDR_WIDTH": 6,
+        "BW_BITWIDTH": 2,
+        "DATA_WIDTH": 8,
+        "DIVIDER_BITWIDTH": 7,
+        "MAX_SF_WIDTH": 8,
+        "PHASE_WIDTH": 32
+      },
+      "ports": {
+        "i_clk": {
+          "direction": "input",
+          "bits": [ 2 ]
+        },
+        "i_rst_n": {
+          "direction": "input",
+          "bits": [ 3 ]
+        },
+        "i_rx": {
+          "direction": "input",
+          "bits": [ 4 ]
+        },
+        "o_done_n": {
+          "direction": "output",
+          "bits": [ 5 ]
+        },
+        "o_data": {
+          "direction": "output",
+          "bits": [ 6, 7, 8, 9, 10, 11, 12, 13 ]
+        }
+      },
+      "cells": {
+        "nco_inst": {
+          "hide_name": 0,
+          "type": "nco_chirp",
+          "parameters": {
+            "BW_BITWIDTH": 2,
+            "MAX_SF_VALUE": 32,
+            "MAX_SF_WIDTH": 8,
+            "PHASE_WIDTH": 32
+          },
+          "attributes": {
+            "module_not_derived": 1,
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:78.5-89.4"
+          },
+          "connections": {
+            "i_SF": [ "0", "0", "0", "1", "0", "0", "0", "0" ],
+            "i_bw_config": [ "0", "0" ],
+            "i_clk": [ 2 ],
+            "i_init_phase_inc": [ 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45 ],
+            "i_rst_n": [ 46 ],
+            "i_sample_tick_n": [ 47 ],
+            "i_slope": [ "1", "1", "0", "0", "1", "1", "0", "0", "1", "1", "0", "0", "1", "1", "0", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "i_start_n": [ 48 ],
+            "o_done_n": [ 5 ],
+            "o_phase_acc": [ 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80 ]
+          }
+        },
+        "rom_inst": {
+          "hide_name": 0,
+          "type": "sine_rom",
+          "parameters": {
+            "ADDR_WIDTH": 6,
+            "DATA_WIDTH": 8
+          },
+          "attributes": {
+            "module_not_derived": 1,
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:95.5-99.4"
+          },
+          "connections": {
+            "i_addr": [ 75, 76, 77, 78, 79, 80 ],
+            "i_clk": [ 2 ],
+            "o_data": [ 6, 7, 8, 9, 10, 11, 12, 13 ]
+          }
+        },
+        "rst_sync_inst": {
+          "hide_name": 0,
+          "type": "rst_sync",
+          "parameters": {
+          },
+          "attributes": {
+            "module_not_derived": 1,
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:33.12-37.4"
+          },
+          "connections": {
+            "i_clk": [ 2 ],
+            "i_rst_n": [ 3 ],
+            "o_rst_n": [ 46 ]
+          }
+        },
+        "slope_acc_inst": {
+          "hide_name": 0,
+          "type": "slope_accumulator",
+          "parameters": {
+          },
+          "attributes": {
+            "module_not_derived": 1,
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:50.21-58.4"
+          },
+          "connections": {
+            "i_clk": [ 2 ],
+            "i_rst_n": [ 46 ],
+            "i_slope": [ "1", "1", "0", "0", "1", "1", "0", "0", "1", "1", "0", "0", "1", "1", "0", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "i_start_n": [ 81 ],
+            "i_symbol": [ 82, 83, 84, 85, 86, 87, 88, 89 ],
+            "o_done_n": [ 48 ],
+            "o_value": [ 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45 ]
+          }
+        },
+        "tick_gen_inst": {
+          "hide_name": 0,
+          "type": "tick_generator",
+          "parameters": {
+            "BW_BITWIDTH": 2,
+            "DIVIDER_BITWIDTH": 7
+          },
+          "attributes": {
+            "module_not_derived": 1,
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:64.5-70.4"
+          },
+          "connections": {
+            "i_bw_config": [ "0", "0" ],
+            "i_clk": [ 2 ],
+            "i_rst_n": [ 46 ],
+            "i_start_n": [ 48 ],
+            "o_sample_tick_n": [ 47 ]
+          }
+        },
+        "uart_rx_inst": {
+          "hide_name": 0,
+          "type": "uart_rx",
+          "parameters": {
+          },
+          "attributes": {
+            "module_not_derived": 1,
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:40.11-47.4"
+          },
+          "connections": {
+            "i_baud_div": [ "0", "1", "0", "0", "1", "0", "0", "0", "0", "0", "1", "0", "0", "0", "0", "0" ],
+            "i_clk": [ 2 ],
+            "i_rst_n": [ 46 ],
+            "i_rx": [ 4 ],
+            "o_data": [ 82, 83, 84, 85, 86, 87, 88, 89 ],
+            "o_valid_n": [ 81 ]
+          }
+        }
+      },
+      "netnames": {
+        "i_clk": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:9.36-9.41"
+          }
+        },
+        "i_rst_n": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:10.36-10.43"
+          }
+        },
+        "i_rx": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:11.36-11.40"
+          }
+        },
+        "o_data": {
+          "hide_name": 0,
+          "bits": [ 6, 7, 8, 9, 10, 11, 12, 13 ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:13.36-13.42"
+          }
+        },
+        "o_done_n": {
+          "hide_name": 0,
+          "bits": [ 5 ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:12.36-12.44"
+          }
+        },
+        "w_SF": {
+          "hide_name": 0,
+          "bits": [ "0", "0", "0", "1", "0", "0", "0", "0" ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:18.28-18.32"
+          }
+        },
+        "w_baud_div": {
+          "hide_name": 0,
+          "bits": [ "0", "1", "0", "0", "1", "0", "0", "0", "0", "0", "1", "0", "0", "0", "0", "0" ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:17.28-17.38"
+          }
+        },
+        "w_bw_cfg": {
+          "hide_name": 0,
+          "bits": [ "0", "0" ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:20.28-20.36"
+          }
+        },
+        "w_init_phase_inc": {
+          "hide_name": 0,
+          "bits": [ 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45 ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:25.28-25.44"
+          }
+        },
+        "w_phase_acc": {
+          "hide_name": 0,
+          "bits": [ 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80 ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:28.28-28.39"
+          }
+        },
+        "w_rom_addr": {
+          "hide_name": 0,
+          "bits": [ 75, 76, 77, 78, 79, 80 ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:29.28-29.38"
+          }
+        },
+        "w_rst_n_synch": {
+          "hide_name": 0,
+          "bits": [ 46 ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:32.8-32.21"
+          }
+        },
+        "w_rx_data": {
+          "hide_name": 0,
+          "bits": [ 82, 83, 84, 85, 86, 87, 88, 89 ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:23.28-23.37"
+          }
+        },
+        "w_rx_valid_n": {
+          "hide_name": 0,
+          "bits": [ 81 ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:24.28-24.40"
+          }
+        },
+        "w_sample_tick_n": {
+          "hide_name": 0,
+          "bits": [ 47 ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:27.28-27.43"
+          }
+        },
+        "w_slope": {
+          "hide_name": 0,
+          "bits": [ "1", "1", "0", "0", "1", "1", "0", "0", "1", "1", "0", "0", "1", "1", "0", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:19.28-19.35"
+          }
+        },
+        "w_slope_done_n": {
+          "hide_name": 0,
+          "bits": [ 48 ],
+          "attributes": {
+            "src": "c:\\Users\\matti\\Documents\\PlatformIO\\Projects\\HDL_CSS_Modulator_v3\\hdl\\chirpmod.v:26.28-26.42"
+          }
+        }
+      }
+    }
+  }
+}

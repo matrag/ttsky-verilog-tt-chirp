@@ -1,0 +1,116 @@
+IO_LOC  "uio_oe[7]" 69;
+IO_PORT "uio_oe[7]" PULL_MODE=UP;
+
+IO_LOC  "uio_oe[6]" 68;
+IO_PORT "uio_oe[6]" PULL_MODE=UP;
+
+IO_LOC  "uio_oe[5]" 57;
+IO_PORT "uio_oe[5]" PULL_MODE=UP;
+
+IO_LOC  "uio_oe[4]" 56;
+IO_PORT "uio_oe[4]" PULL_MODE=UP;
+
+IO_LOC  "uio_oe[3]" 55;
+IO_PORT "uio_oe[3]" PULL_MODE=UP;
+
+IO_LOC  "uio_oe[2]" 54;
+IO_PORT "uio_oe[2]" PULL_MODE=UP;
+
+IO_LOC  "uio_oe[1]" 53;
+IO_PORT "uio_oe[1]" PULL_MODE=UP;
+
+IO_LOC  "uio_oe[0]" 30;
+IO_PORT "uio_oe[0]" PULL_MODE=UP;
+
+IO_LOC  "uio_out[7]" 71;
+IO_PORT "uio_out[7]" PULL_MODE=UP;
+
+IO_LOC  "uio_out[6]" 72;
+IO_PORT "uio_out[6]" PULL_MODE=UP;
+
+IO_LOC  "uio_out[5]" 73;
+IO_PORT "uio_out[5]" PULL_MODE=UP;
+
+IO_LOC  "uio_out[4]" 74;
+IO_PORT "uio_out[4]" PULL_MODE=UP;
+
+IO_LOC  "uio_out[3]" 75;
+IO_PORT "uio_out[3]" PULL_MODE=UP;
+
+IO_LOC  "uio_out[2]" 76;
+IO_PORT "uio_out[2]" PULL_MODE=UP;
+
+IO_LOC  "uio_out[1]" 77;
+IO_PORT "uio_out[1]" PULL_MODE=UP;
+
+IO_LOC  "uio_in[7]" 79;
+IO_PORT "uio_in[7]" PULL_MODE=UP;
+
+IO_LOC  "uio_in[6]" 80;
+IO_PORT "uio_in[6]" PULL_MODE=UP;
+
+IO_LOC  "uio_in[5]" 81;
+IO_PORT "uio_in[5]" PULL_MODE=UP;
+
+IO_LOC  "uio_in[4]" 82;
+IO_PORT "uio_in[4]" PULL_MODE=UP;
+
+IO_LOC  "uio_in[3]" 83;
+IO_PORT "uio_in[3]" PULL_MODE=UP;
+
+IO_LOC  "uio_in[2]" 84;
+IO_PORT "uio_in[2]" PULL_MODE=UP;
+
+IO_LOC  "uio_in[1]" 85;
+IO_PORT "uio_in[1]" PULL_MODE=UP;
+
+IO_LOC  "uio_in[0]" 86;
+IO_PORT "uio_in[0]" PULL_MODE=UP;
+
+IO_LOC  "ena" 49;
+IO_PORT "ena" PULL_MODE=UP;
+
+IO_LOC  "ui_in[7]" 51;
+IO_PORT "ui_in[7]" PULL_MODE=UP;
+
+IO_LOC  "ui_in[6]" 42;
+IO_PORT "ui_in[6]" PULL_MODE=UP;
+
+IO_LOC  "ui_in[5]" 41;
+IO_PORT "ui_in[5]" PULL_MODE=UP;
+
+IO_LOC  "ui_in[4]" 35;
+IO_PORT "ui_in[4]" PULL_MODE=UP;
+
+IO_LOC  "ui_in[3]" 40;
+IO_PORT "ui_in[3]" PULL_MODE=UP;
+
+IO_LOC  "ui_in[2]" 34;
+IO_PORT "ui_in[2]" PULL_MODE=UP;
+
+IO_LOC  "ui_in[1]" 33;
+IO_PORT "ui_in[1]" PULL_MODE=UP;
+
+IO_LOC  "uo_out[7]" 29;
+
+IO_LOC  "uo_out[6]" 28;
+
+IO_LOC  "uo_out[5]" 27;
+
+IO_LOC  "uo_out[4]" 26;
+
+IO_LOC  "uo_out[3]" 25;
+
+IO_LOC  "uo_out[2]" 39;
+
+IO_LOC  "uo_out[1]" 36;
+
+IO_LOC  "uo_out[0]" 37;
+
+IO_LOC  "uio_out[0]" 48;
+
+IO_LOC  "ui_in[0]" 70;
+
+IO_LOC  "clk" 31;
+
+IO_LOC  "rst_n" 32;

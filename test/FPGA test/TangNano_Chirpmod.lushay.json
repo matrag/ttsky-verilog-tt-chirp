@@ -1,0 +1,6 @@
+{
+    "name": "TangNano_Chirpmod",
+    "includedFiles": "all",
+    "constraintsFile": "chirpmod.cst",
+    "top": "tt_um_matrag_chirp_top"
+}
